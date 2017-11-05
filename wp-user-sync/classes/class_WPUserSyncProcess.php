@@ -71,6 +71,7 @@ class WPUserSyncProcess
 			foreach ( $lists['lists'] as $item ) {
 				$lists_str[ $item['id'] ] = $item['name'];
 			}
+
 		} catch ( Exception $e ) {
 			$wrapper = false;
 			$error = $e;
@@ -152,7 +153,7 @@ class WPUserSyncProcess
 		?>
 		<h1><?php echo __( 'MailChimp Users Sync Settings', 'wp-user-sync' ); ?></h1>
 		<form action="" method="POST">
-		<table class="form-table">
+		<table class="wp-user-sync-settings form-table">
 		<?php
 		global $wp_roles;
 		$roles = $wp_roles->get_names();
@@ -160,7 +161,7 @@ class WPUserSyncProcess
 
 		require_once( WPUSync_DIR . '/vendor/mailchimp/MailChimp.php' );
 		?>
-			<tr>
+			<tr class="head underlined">
 				<th><?php echo __( 'MailChimp API key', 'wp-user-sync' ); ?></th>
 				<td><input name="wp-user-sync[api-key]" type="text" class="regular-text ltr" value="<?php echo $options['api-key']; ?>" /></td>
 			</tr>
@@ -173,8 +174,9 @@ class WPUserSyncProcess
 					&nbsp;&nbsp;&nbsp;
 
 					<label class="subscribe-options"><input name="wp-user-sync[subscribe]"
-						<?php echo $this->isChecked( $options, 'subscribe', 'no' ); ?>
+						<?php echo $this->isChecked( $options, 'subscribe', 'no', true ); ?>
 						type="radio" value="no"><?php echo __( 'Do nothing', 'wp-user-sync' ); ?></label>
+					<small><?php echo __('What to do when a new list is assigned to a role', 'wp-user-sync') ?></small>
 				</td>
 			</tr>
 			<tr>
@@ -186,8 +188,9 @@ class WPUserSyncProcess
 					&nbsp;&nbsp;&nbsp;
 
 					<label class="subscribe-options"><input name="wp-user-sync[resubscribe]"
-						<?php echo $this->isChecked( $options, 'subscribe', 'no' ); ?>
+						<?php echo $this->isChecked( $options, 'subscribe', 'no', true ); ?>
 						type="radio" value="no"><?php echo __( 'Do nothing', 'wp-user-sync' ); ?></label>
+					<small><?php echo __('What to do when a list is reassigned to a role', 'wp-user-sync') ?></small>
 				</td>
 			</tr>
 			<tr>
@@ -199,11 +202,12 @@ class WPUserSyncProcess
 					&nbsp;&nbsp;&nbsp;
 
 					<label class="subscribe-options"><input name="wp-user-sync[unsubscribe]"
-						<?php echo $this->isChecked( $options, 'unsubscribe', 'no' ); ?>
+						<?php echo $this->isChecked( $options, 'unsubscribe', 'no', true ); ?>
 						type="radio" value="no"><?php echo __( 'Do nothing', 'wp-user-sync' ); ?></label>
+					<small><?php echo __('What to do when a list is unassigned from a role', 'wp-user-sync') ?></small>
 				</td>
 			</tr>
-			<tr>
+			<tr class="underlined">
 				<th><?php echo __( 'On User Delete', 'wp-user-sync' ); ?></th>
 				<td>
 					<label class="subscribe-options"><input name="wp-user-sync[del_unsubscribe]"
@@ -212,8 +216,9 @@ class WPUserSyncProcess
 					&nbsp;&nbsp;&nbsp;
 
 					<label class="subscribe-options"><input name="wp-user-sync[del_unsubscribe]"
-						<?php echo $this->isChecked( $options, 'del_unsubscribe', 'no' ); ?>
+						<?php echo $this->isChecked( $options, 'del_unsubscribe', 'no', true ); ?>
 						type="radio" value="no"><?php echo __( 'Do nothing', 'wp-user-sync' ); ?></label>
+					<small><?php echo __('What to do when a user is deleted', 'wp-user-sync') ?></small>
 				</td>
 			</tr>
 
@@ -221,7 +226,7 @@ class WPUserSyncProcess
 		if ( isset( $options['api-key'] ) && !empty( $options['api-key'] ) ) {
 
 			try {
-				$wrapper = new MailChimp( $options['api-key'] );
+				$wrapper = new mc3_MailChimp( $options['api-key'] );
 				$lists = $wrapper->get( 'lists' );
 				$lists_str = array();
 				foreach ( $lists['lists'] as $item ) {
@@ -235,7 +240,7 @@ class WPUserSyncProcess
 
 			if ( $wrapper ) {
 		?>
-			<tr>
+			<tr class="head">
 				<th colspan="2">
 					<h2><?php echo __( 'Assign roles to lists', 'wp-user-sync' ); ?></h2>
 				</th>
@@ -291,7 +296,7 @@ class WPUserSyncProcess
 				$wrapper = false;
 			} else {
 				try {
-					$wrapper = new MailChimp( $options['api-key'] );
+					$wrapper = new mc3_MailChimp( $options['api-key'] );
 				} catch ( Exception $e ) {
 					$wrapper = false;
 				}
@@ -375,8 +380,10 @@ class WPUserSyncProcess
 		return ob_get_clean();
 	}
 
-	private function isChecked ( $options, $item, $key ) {
+	private function isChecked ( $options, $item, $key, $def = false ) {
 		if ( isset ( $options[ $item ] ) && $options[ $item ] == $key ) {
+			return 'checked';
+		} elseif ( $def && ( !isset( $options[ $item ]) || $options[ $item ] == '' ) ) {
 			return 'checked';
 		} else {
 			return '';
@@ -390,7 +397,7 @@ class WPUserSyncProcess
 		try
 		{
 			require_once( WPUSync_DIR . '/vendor/mailchimp/MailChimp.php' );
-			$wrapper = new MailChimp( $options['api-key'] );
+			$wrapper = new mc3_MailChimp( $options['api-key'] );
 			$error = false;
 		} catch( Exception $e ) {
 			$wrapper = false;
@@ -419,7 +426,7 @@ class WPUserSyncProcess
 		try
 		{
 			require_once( WPUSync_DIR . '/vendor/mailchimp/MailChimp.php' );
-			$wrapper = new MailChimp( $options['api-key'] );
+			$wrapper = new mc3_MailChimp( $options['api-key'] );
 			$error = false;
 		} catch( Exception $e ) {
 			$wrapper = false;
@@ -448,7 +455,7 @@ class WPUserSyncProcess
 			try
 			{
 				require_once( WPUSync_DIR . '/vendor/mailchimp/MailChimp.php' );
-				$wrapper = new MailChimp( $options['api-key'] );
+				$wrapper = new mc3_MailChimp( $options['api-key'] );
 				$error = false;
 			} catch( Exception $e ) {
 				$wrapper = false;

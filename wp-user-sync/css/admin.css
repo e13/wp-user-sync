@@ -1,6 +1,11 @@
-.subscribe-options
+.wp-user-sync-settings .subscribe-options
 {
     width: 150px;
     margin-right: 20px;
     display: inline-block;
+}
+.wp-user-sync-settings .underlined > td,
+.wp-user-sync-settings .underlined > th
+{
+	border-bottom: 1px solid #ddd;
 }

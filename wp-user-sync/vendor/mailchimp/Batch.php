@@ -13,7 +13,7 @@ class mc3_Batch
 	private $operations = array();
 	private $batch_id;
 
-	public function __construct( MailChimp $MailChimp, $batch_id = null ) {
+	public function __construct( mc3_MailChimp $MailChimp, $batch_id = null ) {
 		$this->MailChimp = $MailChimp;
 		$this->batch_id = $batch_id;
 	}

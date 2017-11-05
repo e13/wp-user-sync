@@ -4,13 +4,14 @@
  * @author		Mechanical Pie Studio
  * @license		GPL-3.0+
  * @link		https://mechanical-pie.com
- * @version		0.1
+ * @version		1.0
  * 
  * @wordpress-plugin
  * Plugin Name:			WP User Sync
  * Plugin URI:			https://github.com/e13/wp-user-sync
- * Description:			Syncs users with mailing lists depending on user roles
- * Version:			0.1
+ * Description:			Syncs users with MailChimp mailing lists depending on user roles
+ * Version:			1.0
+ * Text Domain:			wp-user-sync
  * Author:			Mechanical Pie Studio
  * Author URI:			https://mechanical-pie.com
  * License:			GPLv3 or later
