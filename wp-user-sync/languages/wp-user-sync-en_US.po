@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP User Sync\n"
+"POT-Creation-Date: 2017-11-05 04:40+0300\n"
+"PO-Revision-Date: 2017-11-05 04:40+0300\n"
+"Last-Translator: \n"
+"Language-Team: Mechanical Pie Studio\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_x;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: css\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: languages\n"
+
+#: classes/class_WPUserSyncProcess.php:42
+#: classes/class_WPUserSyncProcess.php:43
+msgid "WP Users Sync"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:51
+#: classes/class_WPUserSyncProcess.php:52
+msgid "MailChimp Settings"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:62
+msgid "Sync Status"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:78
+msgid "Error while trying connect to MailChimp"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:86
+msgid "User"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:87
+msgid "Role"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:88
+msgid "Lists"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:89
+msgid "Status"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:103
+#: classes/class_WPUserSyncProcess.php:252
+msgid "Not assigned"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:119
+msgid "Subscribed"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:124
+#: classes/class_WPUserSyncProcess.php:128
+msgid "Not Subscribed"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:153
+msgid "MailChimp Users Sync Settings"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:164
+msgid "MailChimp API key"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:168
+msgid "On List Assign"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:172
+msgid "Subscribe users"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:177
+#: classes/class_WPUserSyncProcess.php:190
+#: classes/class_WPUserSyncProcess.php:203
+#: classes/class_WPUserSyncProcess.php:216
+msgid "Do nothing"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:181
+msgid "On List Reassign"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:185
+msgid "Resubscribe users"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:194
+msgid "On List Unassign"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:198
+#: classes/class_WPUserSyncProcess.php:211
+msgid "Unsubscribe"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:207
+msgid "On User Delete"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:240
+msgid "Assign roles to lists"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:262
+msgid "Error occured while trying to make MailChimp connection"
+msgstr ""
+
+#: classes/class_WPUserSyncProcess.php:273
+msgid "Save Changes"
+msgstr ""
